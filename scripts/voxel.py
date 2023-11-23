@@ -65,7 +65,7 @@ def DrawScene():
 
 
 def preencher_mtl_baseado_em_index(mtl_file):
-    for rgb, i in indice_rgbs.iteritems():
+    for rgb, i in iter(indice_rgbs.items()):
         mtl_file.write('newmtl texture%s\n' % (str(i)))
         array_rgb = rgb.split()
         mtl_file.write('Ka %s %s %s\n' % (str(float(array_rgb[0])/255.0), str(float(array_rgb[1])/255.0),
@@ -115,7 +115,7 @@ def main():
     loadFile()
     DrawScene()
     end = time.time()
-    print 'tempo de execucao: %s' % (str(end - start))
+    print('tempo de execucao: %s' % (str(end - start)))
     sys.exit()
 
 

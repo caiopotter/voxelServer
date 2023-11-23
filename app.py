@@ -2,8 +2,10 @@ import subprocess
 import json
 from flask import Flask
 from proj_utils.fileUtils import converter_arquivo_base64
+from flask_cors import CORS
 
 app = Flask(__name__)
+cors = CORS(app)
 
 
 @app.route('/')
@@ -20,7 +22,7 @@ def cria_voxel():
         mtl_base64 = converter_arquivo_base64('.\\results\\teste.mtl')
 
         resposta = {
-            "tempo": resultado,
+            "tempo": resultado.decode('utf-8'),
             "arquivo_obj": obj_base64,
             "arquivo_mtl": mtl_base64
         }
